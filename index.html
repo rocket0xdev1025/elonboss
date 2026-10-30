@@ -1,1035 +1,260 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Space Final Boss ($ELONBOSS)</title>
-  <meta name="description" content="Space Final Boss unlocked: Elon Musk. Reusable rockets, Mars colony speedrun, and zero mercy for your outdated plans." />
-  <meta name="theme-color" content="#050814" />
-  <link rel="canonical" href="https://www.spacebosselon.site/" />
-  <link rel="icon" href="logo.jpg" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.spacebosselon.site/" />
-  <meta property="og:title" content="Space Final Boss ($ELONBOSS)" />
-  <meta property="og:description" content="Space Final Boss unlocked: Elon Musk. Reusable rockets, Mars colony speedrun, and zero mercy for your outdated plans." />
-  <meta property="og:image" content="https://www.spacebosselon.site/banner.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Space Final Boss ($ELONBOSS)" />
-  <meta name="twitter:description" content="Space Final Boss unlocked: Elon Musk. Reusable rockets, Mars colony speedrun, and zero mercy for your outdated plans." />
-  <meta name="twitter:image" content="https://www.spacebosselon.site/banner.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Sora:wght@400;500;600&display=swap" rel="stylesheet" />
-  <!-- Contract is TBA. When the mint is live, replace TBA in #ca and in every output=TBA buy link. -->
-  <style>
-    :root {
-      --bg: #050814;
-      --gold: #e7c56a;
-      --gold-2: #fff1c2;
-      --ink: #07101c;
-      --text: #eef3ff;
-      --muted: #b7c4dc;
-      --line: rgba(231, 197, 106, 0.28);
-    }
-
-    *, *::before, *::after { box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      margin: 0;
-      color: var(--text);
-      font-family: Sora, "Segoe UI", sans-serif;
-      background:
-        radial-gradient(1000px 520px at 88% -10%, rgba(231, 197, 106, 0.09), transparent 55%),
-        radial-gradient(820px 480px at -12% 16%, rgba(32, 78, 150, 0.28), transparent 52%),
-        var(--bg);
-      line-height: 1.5;
-    }
-
-    img { max-width: 100%; }
-
-    a { color: inherit; text-decoration: none; }
-
-    button, input { font: inherit; color: inherit; }
-
-    ::selection { background: var(--gold); color: #161004; }
-
-    .skip {
-      position: absolute;
-      left: 12px;
-      top: -40px;
-      z-index: 50;
-      background: var(--gold);
-      color: var(--ink);
-      padding: 8px 12px;
-      border-radius: 8px;
-    }
-
-    .skip:focus { top: 12px; }
-
-    #stars, .glow {
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-    }
-
-    #stars { z-index: 0; }
-
-    .glow {
-      z-index: 0;
-      inset: auto;
-      left: 50%;
-      bottom: -42vh;
-      width: 160vw;
-      height: 72vh;
-      transform: translateX(-50%);
-      background: radial-gradient(ellipse at center, rgba(42, 116, 210, 0.4), rgba(8, 18, 42, 0.12) 46%, transparent 72%);
-    }
-
-    .page { position: relative; z-index: 1; }
-
-    .wrap {
-      width: min(1120px, calc(100% - 40px));
-      margin-inline: auto;
-    }
-
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 30;
-      background: rgba(5, 8, 20, 0.82);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(231, 197, 106, 0.14);
-    }
-
-    .nav-inner {
-      min-height: 74px;
-      display: flex;
-      align-items: center;
-      gap: 18px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-family: Orbitron, Impact, sans-serif;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      font-size: 14px;
-    }
-
-    .brand img {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 1px solid var(--gold);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 18px;
-      margin-left: 6px;
-      font-family: Orbitron, Impact, sans-serif;
-      font-size: 11px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .nav-links a:hover { color: var(--gold-2); }
-
-    .nav-actions {
-      margin-left: auto;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .icon-btn {
-      width: 40px;
-      height: 40px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      border: 1px solid rgba(255, 255, 255, 0.14);
-    }
-
-    .icon-btn:hover { border-color: var(--gold); }
-
-    .icon-btn img.x,
-    .pill img.x {
-      mix-blend-mode: screen;
-    }
-
-    .icon-btn img.x { width: 16px; height: 16px; }
-
-    .icon-btn img.tg { width: 22px; height: 22px; border-radius: 50%; }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      min-height: 52px;
-      padding: 0 22px;
-      border-radius: 999px;
-      border: 1px solid transparent;
-      font-family: Orbitron, Impact, sans-serif;
-      font-weight: 700;
-      font-size: 13px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      white-space: nowrap;
-      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
-    }
-
-    .btn svg { display: block; }
-
-    .btn:hover { transform: translateY(-2px); }
-
-    .btn:active { transform: translateY(0); }
-
-    .btn-sm { min-height: 42px; padding: 0 16px; font-size: 11px; letter-spacing: 0.12em; }
-
-    .btn-buy {
-      color: #1a1203;
-      background: linear-gradient(180deg, #fff0c2 0%, #e4bc58 48%, #b8862a 100%);
-      box-shadow: 0 10px 30px rgba(224, 180, 74, 0.22);
-    }
-
-    .btn-buy:hover { box-shadow: 0 16px 36px rgba(224, 180, 74, 0.38); }
-
-    .btn-chart {
-      color: var(--gold-2);
-      background: rgba(5, 8, 20, 0.35);
-      border-color: var(--line);
-    }
-
-    .btn-chart:hover { border-color: var(--gold); }
-
-    .btn:focus-visible,
-    .icon-btn:focus-visible,
-    .pill:focus-visible,
-    .copy:focus-visible,
-    .nav-links a:focus-visible {
-      outline: 2px solid var(--gold-2);
-      outline-offset: 3px;
-    }
-
-    .hero {
-      position: relative;
-      overflow: hidden;
-      min-height: calc(100vh - 74px);
-      display: flex;
-      align-items: center;
-      padding: 28px 0 42px;
-    }
-
-    .flyby {
-      position: absolute;
-      height: 2px;
-      width: 130px;
-      background: linear-gradient(90deg, transparent, rgba(255, 180, 100, 0.15), #fff 78%, #ffb15a);
-      filter: drop-shadow(0 0 6px #ff8a3d);
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .flyby.one { top: 20%; animation: fly 12s linear infinite; }
-
-    .flyby.two { top: 74%; width: 78px; animation: fly 17s linear 5s infinite; }
-
-    @keyframes fly {
-      0% { transform: translateX(-25vw) rotate(-14deg); opacity: 0; }
-      10% { opacity: 0.85; }
-      78% { opacity: 0.85; }
-      100% { transform: translateX(115vw) rotate(-14deg); opacity: 0; }
-    }
-
-    .hero-grid {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: minmax(0, 1.25fr) minmax(260px, 0.75fr);
-      gap: 42px;
-      align-items: center;
-    }
-
-    .kicker {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin: 0;
-      color: var(--gold);
-      font-family: Orbitron, Impact, sans-serif;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.26em;
-      text-transform: uppercase;
-    }
-
-    .kicker::before {
-      content: "";
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #ff8a3d;
-      box-shadow: 0 0 10px #ff8a3d;
-    }
-
-    .hero .kicker::before { animation: pulse 1.6s ease-in-out infinite; }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(0.75); }
-    }
-
-    h1, h2, h3 { font-family: Orbitron, Impact, sans-serif; }
-
-    h1 {
-      margin: 12px 0 0;
-      font-size: clamp(46px, 5.4vw, 74px);
-      font-weight: 800;
-      line-height: 0.92;
-      letter-spacing: 0.01em;
-    }
-
-    h1 span { display: block; }
-
-    .gold { color: #e7c56a; }
-
-    @supports ((-webkit-background-clip: text) or (background-clip: text)) {
-      .gold {
-        background: linear-gradient(180deg, #fff6d2 0%, #f0d078 46%, #c8963a 100%);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-      }
-    }
-
-    .ticker {
-      display: inline-flex;
-      margin-top: 16px;
-      padding: 6px 12px;
-      border-radius: 999px;
-      background: rgba(231, 197, 106, 0.12);
-      border: 1px solid rgba(231, 197, 106, 0.22);
-      color: var(--gold-2);
-      font-family: Orbitron, Impact, sans-serif;
-      font-size: 13px;
-      letter-spacing: 0.18em;
-    }
-
-    .lede {
-      max-width: 38rem;
-      margin: 18px 0 0;
-      padding-left: 14px;
-      border-left: 2px solid rgba(231, 197, 106, 0.75);
-      color: var(--muted);
-      font-size: 18px;
-      line-height: 1.55;
-    }
-
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 26px;
-    }
-
-    .ca {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      width: fit-content;
-      max-width: 100%;
-      margin-top: 16px;
-      padding: 7px 7px 7px 16px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(5, 8, 16, 0.66);
-    }
-
-    .ca-label {
-      color: var(--gold);
-      font-family: Orbitron, Impact, sans-serif;
-      font-size: 10px;
-      letter-spacing: 0.16em;
-    }
-
-    .ca code {
-      font-family: Orbitron, Impact, sans-serif;
-      font-size: 14px;
-      letter-spacing: 0.12em;
-      color: var(--gold-2);
-    }
-
-    .copy {
-      min-height: 34px;
-      padding: 0 12px;
-      border: 0;
-      border-radius: 999px;
-      background: rgba(231, 197, 106, 0.16);
-      color: var(--gold-2);
-      font-family: Orbitron, Impact, sans-serif;
-      font-size: 10px;
-      letter-spacing: 0.14em;
-      cursor: pointer;
-    }
-
-    .copy:hover { background: rgba(231, 197, 106, 0.28); }
-
-    .socials {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 16px;
-    }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      height: 42px;
-      padding: 0 14px 0 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      font-family: Orbitron, Impact, sans-serif;
-      font-size: 11px;
-      letter-spacing: 0.14em;
-    }
-
-    .pill:hover { border-color: var(--gold); color: var(--gold-2); }
-
-    .pill img.x { width: 16px; height: 16px; }
-
-    .pill img.tg { width: 20px; height: 20px; border-radius: 50%; }
-
-    .medal {
-      position: relative;
-      width: min(420px, 100%);
-      margin-inline: auto;
-    }
-
-    .medal img {
-      display: block;
-      width: 100%;
-      aspect-ratio: 1;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 3px solid var(--gold);
-      box-shadow:
-        0 0 0 12px rgba(231, 197, 106, 0.1),
-        0 30px 80px rgba(0, 0, 0, 0.5);
-    }
-
-    .orbit {
-      position: absolute;
-      inset: -16px;
-      border-radius: 50%;
-      border: 1px dashed rgba(231, 197, 106, 0.5);
-      animation: spin 26s linear infinite;
-    }
-
-    .orbit span {
-      position: absolute;
-      top: 50%;
-      right: -7px;
-      width: 14px;
-      height: 14px;
-      margin-top: -7px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 35% 35%, #fff, #ff8a3d 45%, #ff5a1f);
-      box-shadow: 0 0 16px #ff8a3d, -16px 0 14px rgba(255, 176, 92, 0.85);
-    }
-
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    .lock {
-      position: absolute;
-      left: 50%;
-      bottom: 8px;
-      transform: translateX(-50%);
-      margin: 0;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: rgba(5, 8, 16, 0.78);
-      border: 1px solid var(--line);
-      color: var(--gold-2);
-      font-family: Orbitron, Impact, sans-serif;
-      font-size: 10px;
-      letter-spacing: 0.18em;
-    }
-
-    .marquee {
-      overflow: hidden;
-      border-block: 1px solid var(--line);
-      background: rgba(231, 197, 106, 0.05);
-    }
-
-    .marquee-track {
-      display: flex;
-      width: max-content;
-      animation: ticker 32s linear infinite;
-    }
-
-    .marquee:hover .marquee-track { animation-play-state: paused; }
-
-    .marquee p {
-      margin: 0;
-      padding: 13px 0;
-      color: #f0d48a;
-      font-family: Orbitron, Impact, sans-serif;
-      font-size: 12px;
-      letter-spacing: 0.22em;
-      white-space: nowrap;
-    }
-
-    @keyframes ticker {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
-    }
-
-    .cinema { padding: 34px 0 10px; }
-
-    .frame {
-      margin: 0;
-      border-radius: 28px;
-      overflow: hidden;
-      border: 1px solid rgba(231, 197, 106, 0.38);
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.38);
-    }
-
-    .frame img { display: block; width: 100%; height: auto; }
-
-    .section { padding: 78px 0; }
-
-    h2 {
-      margin: 10px 0 0;
-      font-size: clamp(30px, 4vw, 48px);
-      font-weight: 800;
-      line-height: 1.05;
-      letter-spacing: 0.02em;
-    }
-
-    .rules {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin-top: 28px;
-    }
-
-    .rule {
-      position: relative;
-      overflow: hidden;
-      min-height: 220px;
-      padding: 26px 22px 24px;
-      border-radius: 22px;
-      border: 1px solid rgba(231, 197, 106, 0.2);
-      background: linear-gradient(180deg, rgba(14, 22, 40, 0.92), rgba(7, 10, 18, 0.92));
-    }
-
-    .rule::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 22px;
-      right: 22px;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    }
-
-    .num {
-      position: absolute;
-      top: 12px;
-      right: 16px;
-      margin: 0;
-      color: rgba(231, 197, 106, 0.16);
-      font-family: Orbitron, Impact, sans-serif;
-      font-size: 42px;
-      font-weight: 800;
-    }
-
-    .rule h3 {
-      position: relative;
-      margin: 18px 0 10px;
-      max-width: 12ch;
-      font-size: 20px;
-      letter-spacing: 0.04em;
-      line-height: 1.25;
-    }
-
-    .rule p {
-      position: relative;
-      margin: 0;
-      color: var(--muted);
-    }
-
-    .split {
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 48px;
-      align-items: start;
-    }
-
-    .spec { margin: 22px 0 0; }
-
-    .spec div {
-      display: grid;
-      grid-template-columns: 130px 1fr;
-      gap: 12px;
-      align-items: baseline;
-      padding: 13px 0;
-      border-bottom: 1px solid rgba(231, 197, 106, 0.16);
-    }
-
-    .spec dt {
-      color: var(--gold);
-      font-family: Orbitron, Impact, sans-serif;
-      font-size: 11px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-    }
-
-    .spec dd {
-      margin: 0;
-      font-size: 18px;
-    }
-
-    .steps {
-      counter-reset: step;
-      list-style: none;
-      margin: 8px 0 0;
-      padding: 0;
-    }
-
-    .steps li {
-      counter-increment: step;
-      display: grid;
-      grid-template-columns: 52px 1fr;
-      gap: 6px;
-      padding: 14px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-    }
-
-    .steps li::before {
-      content: counter(step, decimal-leading-zero);
-      padding-top: 3px;
-      color: var(--gold);
-      font-family: Orbitron, Impact, sans-serif;
-      letter-spacing: 0.08em;
-    }
-
-    .steps h3 {
-      margin: 0 0 4px;
-      font-size: 16px;
-      letter-spacing: 0.06em;
-    }
-
-    .steps p { margin: 0; color: var(--muted); }
-
-    #dossier { padding-top: 0; }
-
-    .finale { text-align: center; padding: 10px 0 86px; }
-
-    .finale .kicker {
-      display: flex;
-      width: max-content;
-      margin-inline: auto;
-    }
-
-    .finale h2 { font-size: clamp(34px, 5vw, 64px); }
-
-    .finale .lede {
-      margin-inline: auto;
-      border: 0;
-      padding: 0;
-      text-align: center;
-    }
-
-    .finale .actions { justify-content: center; }
-
-    footer {
-      border-top: 1px solid rgba(231, 197, 106, 0.16);
-      padding: 28px 0 40px;
-    }
-
-    .foot {
-      display: flex;
-      justify-content: space-between;
-      gap: 18px;
-      align-items: end;
-      flex-wrap: wrap;
-    }
-
-    .brand-foot {
-      margin: 0;
-      font-family: Orbitron, Impact, sans-serif;
-      letter-spacing: 0.14em;
-      font-size: 14px;
-    }
-
-    .sub {
-      margin: 6px 0 0;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .foot-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      font-family: Orbitron, Impact, sans-serif;
-      font-size: 11px;
-      letter-spacing: 0.12em;
-    }
-
-    .foot-links a:hover { color: var(--gold); }
-
-    .fine {
-      max-width: 46rem;
-      margin: 18px 0 0;
-      color: #8ea0c0;
-      font-size: 13px;
-      line-height: 1.55;
-    }
-
-    .dock { display: none; }
-
-    @media (max-width: 860px) {
-      .hero { min-height: 0; display: block; }
-      .hero-grid, .rules, .split { grid-template-columns: 1fr; }
-      .medal { width: min(320px, 78vw); margin-top: 8px; }
-      .nav-links { display: none; }
-    }
-
-    @media (max-width: 760px) {
-      .wrap { width: min(1120px, calc(100% - 32px)); }
-      .nav-actions .btn { display: none; }
-      .section { padding: 56px 0; }
-      .lede { font-size: 16px; }
-      .actions .btn { flex: 1; }
-      .dock {
-        position: fixed;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 40;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-        padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
-        background: rgba(5, 8, 20, 0.94);
-        border-top: 1px solid var(--line);
-        backdrop-filter: blur(12px);
-      }
-      body { padding-bottom: 76px; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::before, *::after {
-        animation: none !important;
-        transition: none !important;
-      }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Space Final Boss ($ELONBOSS) | Final Boss Unlocked</title>
+<meta name="description" content="Space Final Boss unlocked. Reusable rockets, Mars colony speedrun, and zero mercy for your outdated plans. $ELONBOSS on Solana.">
+<link rel="icon" href="assets/img/favicon.png">
+<meta property="og:image" content="assets/img/banner.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=Chakra+Petch:wght@500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <a class="skip" href="#content">Skip to content</a>
-  <canvas id="stars" aria-hidden="true"></canvas>
-  <div class="glow" aria-hidden="true"></div>
+<body class="booting">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-wallet" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M3 7h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7zm0 0V6a2 2 0 0 1 2-2h11v3M16 13.5h.01"/></symbol>
+  <symbol id="i-sol" viewBox="0 0 24 24"><path fill="currentColor" d="M6 4h15l-3 4H3zM3 10h15l3 4H6zM6 16h15l-3 4H3z"/></symbol>
+  <symbol id="i-swap" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M4 8h14l-4-4M20 16H6l4 4"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6zM8.5 12l2.5 2.5 4.5-5"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M9 9h11v11H9zM5 15H4V4h11v1"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M1 12h4M19 12h4"/></g></symbol>
+  <symbol id="i-rocket" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M12 2c3 2 5 6 5 10l-2 5H9l-2-5c0-4 2-8 5-10zM9 17l-3 3 1-5M15 17l3 3-1-5M12 9.5h.01"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24"><path fill="currentColor" d="M13 2 4 14h7l-1 8 9-12h-7z"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M3 3v18h18M7 15l4-4 3 3 6-7"/></symbol>
+</svg>
 
-  <div class="page" id="top">
-    <header class="nav">
-      <div class="wrap nav-inner">
-        <a class="brand" href="#top">
-          <img src="logo.jpg" alt="" width="42" height="42" />
-          <span>ELONBOSS</span>
-        </a>
-        <nav class="nav-links" aria-label="Sections">
-          <a href="#mission">Mission</a>
-          <a href="#dossier">Dossier</a>
-          <a href="#summon">Buy</a>
-        </nav>
-        <div class="nav-actions">
-          <a class="icon-btn" href="https://x.com/spaceboss_elon" target="_blank" rel="noopener noreferrer" aria-label="Space Final Boss on X">
-            <img class="x" src="x.png" alt="" width="16" height="16" />
-          </a>
-          <a class="icon-btn" href="https://t.me/spaceboss_elon" target="_blank" rel="noopener noreferrer" aria-label="Space Final Boss on Telegram">
-            <img class="tg" src="tg.png" alt="" width="22" height="22" />
-          </a>
-          <a class="btn btn-chart btn-sm" href="https://dexscreener.com/solana/" target="_blank" rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true">
-              <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4 16l5-5 3 3 8-8" />
-              <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M15 6h5v5" />
-            </svg>
-            Chart
-          </a>
-          <a class="btn btn-buy btn-sm" href="https://swap.pump.fun/?input=So11111111111111111111111111111111111111112&output=TBA" target="_blank" rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true">
-              <path fill="currentColor" d="M12 2.2c1.8 2.8 2.8 5.2 2.8 7.7 0 1-.2 2-.5 2.9l1.8 2.4-2.3-1a6.8 6.8 0 0 1-3.6 0l-2.3 1 1.8-2.4a8 8 0 0 1-.5-2.9c0-2.5 1-4.9 2.8-7.7z" />
-              <path fill="currentColor" d="M10.2 19.2 12 22l1.8-2.8h-3.6z" />
-            </svg>
-            Buy
-          </a>
-        </div>
-      </div>
-    </header>
-
-    <main id="content">
-      <section class="hero">
-        <div class="flyby one" aria-hidden="true"></div>
-        <div class="flyby two" aria-hidden="true"></div>
-        <div class="wrap hero-grid">
-          <div>
-            <p class="kicker">Final boss unlocked</p>
-            <h1>
-              <span>SPACE</span>
-              <span class="gold">FINAL BOSS</span>
-            </h1>
-            <p class="ticker">$ELONBOSS</p>
-            <p class="lede">Space Final Boss unlocked: Elon Musk. Reusable rockets, Mars colony speedrun, and zero mercy for your outdated plans.</p>
-            <div class="actions">
-              <a class="btn btn-buy" href="https://swap.pump.fun/?input=So11111111111111111111111111111111111111112&output=TBA" target="_blank" rel="noopener noreferrer">
-                <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
-                  <path fill="currentColor" d="M12 2.2c1.8 2.8 2.8 5.2 2.8 7.7 0 1-.2 2-.5 2.9l1.8 2.4-2.3-1a6.8 6.8 0 0 1-3.6 0l-2.3 1 1.8-2.4a8 8 0 0 1-.5-2.9c0-2.5 1-4.9 2.8-7.7z" />
-                  <path fill="currentColor" d="M10.2 19.2 12 22l1.8-2.8h-3.6z" />
-                </svg>
-                Buy
-              </a>
-              <a class="btn btn-chart" href="https://dexscreener.com/solana/" target="_blank" rel="noopener noreferrer">
-                <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
-                  <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4 16l5-5 3 3 8-8" />
-                  <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M15 6h5v5" />
-                </svg>
-                Chart
-              </a>
-            </div>
-            <div class="ca">
-              <span class="ca-label">Contract</span>
-              <code id="ca">TBA</code>
-              <button class="copy" type="button" data-copy><span>Copy</span></button>
-            </div>
-            <div class="socials">
-              <a class="pill" href="https://x.com/spaceboss_elon" target="_blank" rel="noopener noreferrer">
-                <img class="x" src="x.png" alt="" width="16" height="16" />
-                <span>X</span>
-              </a>
-              <a class="pill" href="https://t.me/spaceboss_elon" target="_blank" rel="noopener noreferrer">
-                <img class="tg" src="tg.png" alt="" width="20" height="20" />
-                <span>Telegram</span>
-              </a>
-            </div>
-          </div>
-          <div class="medal">
-            <div class="orbit" aria-hidden="true"><span></span></div>
-            <img src="logo.jpg" alt="Space Final Boss, Elon Musk in a navy admiral uniform with a rocket over Earth" width="840" height="840" fetchpriority="high" />
-            <p class="lock">Target locked</p>
-          </div>
-        </div>
-      </section>
-
-      <div class="marquee" aria-hidden="true">
-        <div class="marquee-track">
-          <p>SPACE FINAL BOSS&nbsp;&nbsp;·&nbsp;&nbsp;$ELONBOSS&nbsp;&nbsp;·&nbsp;&nbsp;REUSABLE ROCKETS&nbsp;&nbsp;·&nbsp;&nbsp;MARS COLONY SPEEDRUN&nbsp;&nbsp;·&nbsp;&nbsp;ZERO MERCY&nbsp;&nbsp;·&nbsp;&nbsp;</p>
-          <p>SPACE FINAL BOSS&nbsp;&nbsp;·&nbsp;&nbsp;$ELONBOSS&nbsp;&nbsp;·&nbsp;&nbsp;REUSABLE ROCKETS&nbsp;&nbsp;·&nbsp;&nbsp;MARS COLONY SPEEDRUN&nbsp;&nbsp;·&nbsp;&nbsp;ZERO MERCY&nbsp;&nbsp;·&nbsp;&nbsp;</p>
-        </div>
-      </div>
-
-      <section class="cinema" aria-label="Banner">
-        <div class="wrap">
-          <figure class="frame">
-            <img src="banner.png" alt="The Space Final Boss points ahead as a rocket climbs and the crew salutes above Earth" loading="lazy" />
-          </figure>
-        </div>
-      </section>
-
-      <section class="section" id="mission">
-        <div class="wrap">
-          <p class="kicker">The loadout</p>
-          <h2>Three rules. No patch notes.</h2>
-          <div class="rules">
-            <article class="rule">
-              <p class="num">01</p>
-              <h3>Reusable rockets</h3>
-              <p>Down is a layover. Relight, climb, and leave the old flight plan in the exhaust.</p>
-            </article>
-            <article class="rule">
-              <p class="num">02</p>
-              <h3>Mars colony speedrun</h3>
-              <p>Any percent. No cutscenes. The colony is the finish line, and the clock is already running.</p>
-            </article>
-            <article class="rule">
-              <p class="num">03</p>
-              <h3>Zero mercy</h3>
-              <p>Outdated plans get vented. If it cannot reach Mars, it does not make the roster.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="dossier">
-        <div class="wrap split">
-          <div>
-            <p class="kicker">Boss file</p>
-            <h2>Read this before you queue.</h2>
-            <dl class="spec">
-              <div><dt>Callsign</dt><dd>ELONBOSS</dd></div>
-              <div><dt>Rank</dt><dd>Space Final Boss</dd></div>
-              <div><dt>Chain</dt><dd>Solana</dd></div>
-              <div><dt>Objective</dt><dd>Mars colony speedrun</dd></div>
-              <div><dt>Contract</dt><dd id="ca-spec">TBA</dd></div>
-              <div><dt>Mercy</dt><dd>Zero</dd></div>
-            </dl>
-          </div>
-          <div id="summon">
-            <p class="kicker">How to buy</p>
-            <h2>Three steps. Then launch.</h2>
-            <ol class="steps">
-              <li>
-                <div>
-                  <h3>Fuel up</h3>
-                  <p>Put SOL in a Solana wallet. That is the only propellant this fight accepts.</p>
-                </div>
-              </li>
-              <li>
-                <div>
-                  <h3>Call the swap</h3>
-                  <p>Buy opens the pump.fun swap with SOL in and $ELONBOSS out.</p>
-                </div>
-              </li>
-              <li>
-                <div>
-                  <h3>Track the flight</h3>
-                  <p>Confirm it, then open the chart. Outdated plans stay on the pad.</p>
-                </div>
-              </li>
-            </ol>
-            <div class="actions">
-              <a class="btn btn-buy" href="https://swap.pump.fun/?input=So11111111111111111111111111111111111111112&output=TBA" target="_blank" rel="noopener noreferrer">Buy</a>
-              <a class="btn btn-chart" href="https://dexscreener.com/solana/" target="_blank" rel="noopener noreferrer">Chart</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="finale">
-        <div class="wrap">
-          <p class="kicker">Launch window</p>
-          <h2>The colony does not wait.</h2>
-          <p class="lede">Reusable rockets. Mars colony speedrun. Zero mercy for your outdated plans.</p>
-          <div class="actions">
-            <a class="btn btn-buy" href="https://swap.pump.fun/?input=So11111111111111111111111111111111111111112&output=TBA" target="_blank" rel="noopener noreferrer">Buy $ELONBOSS</a>
-            <a class="btn btn-chart" href="https://dexscreener.com/solana/" target="_blank" rel="noopener noreferrer">Chart</a>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <div class="wrap">
-        <div class="foot">
-          <div>
-            <p class="brand-foot">SPACE FINAL BOSS</p>
-            <p class="sub">$ELONBOSS · Solana</p>
-          </div>
-          <nav class="foot-links" aria-label="Social">
-            <a href="https://www.spacebosselon.site" target="_blank" rel="noopener noreferrer">Website</a>
-            <a href="https://x.com/spaceboss_elon" target="_blank" rel="noopener noreferrer">X</a>
-            <a href="https://t.me/spaceboss_elon" target="_blank" rel="noopener noreferrer">Telegram</a>
-          </nav>
-        </div>
-        <p class="fine">$ELONBOSS is an unofficial meme on Solana. Not affiliated with Elon Musk, SpaceX, Tesla, or X. Nothing here is financial advice.</p>
-      </div>
-    </footer>
+<!-- ===== BOOT: INSERT COIN -> WARNING ===== -->
+<div id="boot" role="dialog" aria-label="Game boot">
+  <div class="crt"></div>
+  <div class="boot-inner">
+    <p class="boot-sys">ELONBOSS SYSTEMS v4.20 // SOLANA CORE ONLINE</p>
+    <img src="assets/img/logo.webp" alt="" class="boot-logo" width="120" height="120">
+    <p class="boot-credit">CREDIT 0</p>
+    <button id="pressStart" class="press-start">PRESS START</button>
+    <p class="boot-hint">click, tap or press any key</p>
   </div>
-
-  <div class="dock">
-    <a class="btn btn-buy" href="https://swap.pump.fun/?input=So11111111111111111111111111111111111111112&output=TBA" target="_blank" rel="noopener noreferrer">Buy</a>
-    <a class="btn btn-chart" href="https://dexscreener.com/solana/" target="_blank" rel="noopener noreferrer">Chart</a>
+  <div class="warn" aria-hidden="true">
+    <div class="warn-tape"><span>WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING</span></div>
+    <h2 class="warn-title">WARNING<br><small>FINAL BOSS APPROACHING</small></h2>
+    <div class="warn-tape b"><span>WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING</span></div>
   </div>
+</div>
 
-  <script>
-    (function () {
-      var canvas = document.getElementById("stars");
-      if (!canvas || !canvas.getContext) return;
-      var ctx = canvas.getContext("2d");
-      var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      var stars = [];
-      var w = 0;
-      var h = 0;
-      var running = !reduce;
+<!-- ===== HUD ===== -->
+<aside class="hud" aria-label="Mission HUD">
+  <div class="hud-card">
+    <div class="hud-row"><span class="tag">HP</span><div class="meter"><i id="hudHp"></i></div></div>
+    <div class="hud-row"><span class="tag gold">AMMO</span><div class="meter am"><i id="hudAmmo"></i></div></div>
+    <p class="hud-obj"><span class="k">OBJECTIVE</span> <span id="hudObj">Read the briefing</span></p>
+  </div>
+</aside>
+<nav class="minimap" aria-label="Levels">
+  <div class="mm-track"><i id="mmFill"></i></div>
+  <a href="#briefing" data-lv="0"><b>L1</b><span>Briefing</span></a>
+  <a href="#deploy" data-lv="1"><b>L2</b><span>Deploy Army</span></a>
+  <a href="#battle" data-lv="2"><b>L3</b><span>Battle</span></a>
+  <a href="#mars" data-lv="3"><b>L4</b><span>Mars Speedrun</span></a>
+  <a href="#join" data-lv="4"><b>FIN</b><span>Join</span></a>
+</nav>
 
-      function layout() {
-        w = canvas.width = window.innerWidth;
-        h = canvas.height = window.innerHeight;
-        var count = Math.min(160, Math.floor((w * h) / 14000));
-        stars = [];
-        for (var i = 0; i < count; i++) {
-          stars.push({
-            x: Math.random() * w,
-            y: Math.random() * h,
-            r: Math.random() * 1.3 + 0.2,
-            p: Math.random() * Math.PI * 2,
-            s: Math.random() * 0.02 + 0.004
-          });
-        }
-      }
+<!-- Mobile action pad -->
+<div class="pad" aria-label="Action pad">
+  <a class="pad-a" data-link="buy" target="_blank" rel="noopener" aria-label="Buy Now on pump.fun">BUY</a>
+  <a class="pad-b" data-link="chart" target="_blank" rel="noopener" aria-label="Chart on DexScreener"><svg><use href="#i-chart"/></svg></a>
+  <button class="pad-x" data-copy aria-label="Copy contract address"><svg><use href="#i-copy"/></svg></button>
+  <a class="pad-y" data-link="x" target="_blank" rel="noopener" aria-label="X"><img src="assets/brand/x.svg" alt=""></a>
+</div>
 
-      function frame() {
-        ctx.clearRect(0, 0, w, h);
-        for (var i = 0; i < stars.length; i++) {
-          var star = stars[i];
-          if (running) star.p += star.s;
-          var alpha = 0.2 + (Math.sin(star.p) * 0.5 + 0.5) * 0.8;
-          ctx.fillStyle = "rgba(255,255,255," + alpha.toFixed(3) + ")";
-          ctx.beginPath();
-          ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
-          ctx.fill();
-        }
-        if (running) requestAnimationFrame(frame);
-      }
+<main>
+<!-- ===== LEVEL 1: BOSS ENCOUNTER / BRIEFING ===== -->
+<section id="briefing" class="lv encounter">
+  <div class="stars" aria-hidden="true"></div>
+  <div class="boss-hpbar" aria-hidden="true">
+    <div class="bh-name"><span>SPACE FINAL BOSS</span><em>$ELONBOSS</em></div>
+    <div class="bh-bar"><i></i><b>x 9,999,999</b></div>
+  </div>
+  <div class="enc-grid">
+    <div class="enc-copy">
+      <p class="eyebrow"><span class="blink"></span> LEVEL 1 // BRIEFING</p>
+      <h1 class="title">SPACE<br>FINAL <span class="gold-t">BOSS</span></h1>
+      <p class="unlock"><span class="u1">Space Final Boss unlocked: Elon Musk.</span> Reusable rockets, Mars colony speedrun, and zero mercy for your outdated plans.</p>
+      <div class="cta">
+        <a class="btn btn-buy" data-link="buy" target="_blank" rel="noopener"><img src="assets/brand/pumpfun.png" alt="" width="26" height="26">BUY NOW</a>
+        <a class="btn btn-ghost" data-link="chart" target="_blank" rel="noopener"><img src="assets/brand/dexscreener.png" alt="" width="22" height="22">CHART</a>
+      </div>
+      <div class="ca-box">
+        <span class="ca-k">CA</span><code class="ca-v" data-ca>TBA</code>
+        <button class="ca-btn" data-copy><svg><use href="#i-copy"/></svg>COPY</button>
+      </div>
+      <p class="scam"><svg><use href="#i-shield"/></svg>Only trust the CA posted here and on our official X</p>
+    </div>
+    <div class="enc-boss" id="bossStage">
+      <div class="holo-ring" aria-hidden="true"></div>
+      <img src="assets/img/boss_bust.webp" alt="Space Final Boss admiral character" class="boss-bust" width="918" height="1002">
+      <div class="holo-scan" aria-hidden="true"></div>
+      <div class="namecard"><small>BOSS 99 // ADMIRAL OF ORBIT</small><strong>SPACE FINAL BOSS</strong><span>WEAKNESS: NONE &nbsp;|&nbsp; MERCY: 0</span></div>
+    </div>
+  </div>
+  <p class="scrollcue">SCROLL TO DEPLOY <svg><use href="#i-swap"/></svg></p>
+</section>
 
-      layout();
-      frame();
-      window.addEventListener("resize", function () {
-        layout();
-        if (!running) frame();
-      });
-    })();
+<!-- ===== LEVEL 2: DEPLOY ARMY / LOADOUT ===== -->
+<section id="deploy" class="lv deploy">
+  <header class="lv-head"><p class="eyebrow">LEVEL 2 // DEPLOY ARMY</p><h2>CHOOSE YOUR <span class="cy-t">LOADOUT</span></h2><p class="sub">Tokenomics, rendered as a character-select stat screen. One token, one army, no outdated plans.</p></header>
+  <div class="select">
+    <div class="roster" role="tablist" aria-label="Units">
+      <button role="tab" class="unit on" data-unit="0"><img src="assets/img/army_salute.webp" alt="" loading="lazy"><span>COMMANDER</span></button>
+      <button role="tab" class="unit" data-unit="1"><img src="assets/img/army_fire.webp" alt="" loading="lazy"><span>BLASTER</span></button>
+      <button role="tab" class="unit" data-unit="2"><img src="assets/img/army_shield.webp" alt="" loading="lazy"><span>WARDEN</span></button>
+      <button role="tab" class="unit" data-unit="3"><img src="assets/img/army_fly.webp" alt="" loading="lazy"><span>JETBOOST</span></button>
+      <button role="tab" class="unit" data-unit="4"><img src="assets/img/army_run.webp" alt="" loading="lazy"><span>SPRINTER</span></button>
+    </div>
+    <div class="stage">
+      <div class="pedestal" aria-hidden="true"></div>
+      <img id="unitImg" src="assets/img/army_salute.webp" alt="Selected army robot" class="unit-big">
+    </div>
+    <div class="stats">
+      <p class="unit-name" id="unitName">COMMANDER</p>
+      <p class="unit-role" id="unitRole">Supply officer. Keeps the whole army fair-launched.</p>
+      <ul class="statlist">
+        <li><span>SUPPLY</span><b>1,000,000,000</b></li>
+        <li><span>TAX</span><b>0 / 0</b><div class="bar"><i style="--v:100%"></i></div></li>
+        <li><span>LAUNCH</span><b>PUMP.FUN FAIR</b><div class="bar"><i style="--v:100%"></i></div></li>
+        <li><span>LP</span><b>BONDING CURVE</b><div class="bar"><i style="--v:88%"></i></div></li>
+        <li><span>CHAIN</span><b>SOLANA</b><div class="bar"><i style="--v:95%"></i></div></li>
+        <li><span>MERCY</span><b>0</b><div class="bar red"><i style="--v:3%"></i></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-    (function () {
-      var button = document.querySelector("[data-copy]");
-      var node = document.getElementById("ca");
-      if (!button || !node) return;
-      var label = button.querySelector("span");
-      button.addEventListener("click", async function () {
-        var text = node.textContent.trim();
-        var ok = false;
-        try {
-          await navigator.clipboard.writeText(text);
-          ok = true;
-        } catch (err) {
-          var area = document.createElement("textarea");
-          area.value = text;
-          area.setAttribute("readonly", "");
-          area.style.position = "fixed";
-          area.style.left = "-9999px";
-          document.body.appendChild(area);
-          area.select();
-          ok = document.execCommand("copy");
-          area.remove();
-        }
-        label.textContent = ok ? "Copied" : "Select CA";
-        setTimeout(function () { label.textContent = "Copy"; }, 1400);
-      });
-    })();
-  </script>
+<!-- ===== LEVEL 3: BATTLE (pinned) ===== -->
+<section id="battle" class="lv battle">
+  <div class="field" id="field">
+    <div class="field-sky" aria-hidden="true"></div>
+    <div class="field-ground" aria-hidden="true"></div>
+    <div class="b-top">
+      <div class="side ally"><span>BOSS ARMY</span><div class="hp"><i id="allyHp"></i></div></div>
+      <p class="b-lv">LEVEL 3 // BATTLE</p>
+      <div class="side foe"><span>OUTDATED PLANS</span><div class="hp"><i id="foeHp"></i></div></div>
+    </div>
+    <div class="cmd">
+      <img src="assets/img/boss_point.webp" alt="Boss pointing, issuing an order" class="boss-point" id="bossPoint">
+      <div class="console"><p class="c-k">COMMAND CONSOLE</p><p class="c-t"><span id="orderText"></span><i class="caret"></i></p></div>
+      <div class="order-pulse" aria-hidden="true"></div>
+    </div>
+    <div class="army" aria-hidden="true">
+      <img src="assets/img/army_run.webp" class="a a1" alt="">
+      <img src="assets/img/army_fire.webp" class="a a2" alt="">
+      <img src="assets/img/army_shield.webp" class="a a3" alt="">
+      <img src="assets/img/army_fly.webp" class="a a4" alt="">
+    </div>
+    <div class="foes">
+      <div class="foe-u f1"><div class="fhp"><i></i></div><img src="assets/img/enemy_walk.webp" alt="Outdated Plans enemy bot"><em>OUTDATED PLAN</em></div>
+      <div class="foe-u f2"><div class="fhp"><i></i></div><img src="assets/img/enemy_attack.webp" alt="Outdated Plans enemy bot attacking"><em>OUTDATED PLAN</em></div>
+      <div class="foe-u f3 mech"><div class="fhp"><i></i></div><img src="assets/img/enemy_mech.webp" alt="Giant Outdated Plans mech boss"><em>LEGACY MECH</em></div>
+    </div>
+    <div class="lasers" aria-hidden="true"><i class="lz z1"></i><i class="lz z2"></i><i class="lz z3"></i><i class="lz z4"></i></div>
+    <div class="booms" aria-hidden="true"><img src="assets/img/enemy_explode.webp" class="boom m1" alt=""><img src="assets/img/enemy_explode.webp" class="boom m2" alt=""><img src="assets/img/enemy_explode.webp" class="boom m3" alt=""></div>
+    <div class="ko" aria-hidden="true"><strong>K.O.</strong><span>OUTDATED PLANS DELETED</span></div>
+  </div>
+</section>
+
+<!-- Mini game -->
+<section class="lv arcade" aria-labelledby="arcT">
+  <header class="lv-head"><p class="eyebrow">BONUS STAGE</p><h2 id="arcT">BLAST THE <span class="red-t">OUTDATED PLANS</span></h2><p class="sub">Click or tap the red-eyed bots to fire. 30 seconds. Zero mercy.</p></header>
+  <div class="arena" id="arena">
+    <div class="arena-hud"><span>SCORE <b id="score">0</b></span><span>TIME <b id="time">30</b></span><span>HI <b id="hi">0</b></span></div>
+    <img src="assets/img/army_fire.webp" class="gunner" alt="" id="gunner">
+    <button class="arena-start" id="arenaStart">INSERT COIN / START</button>
+  </div>
+</section>
+
+<!-- ===== LEVEL 4: ROCKET + MARS SPEEDRUN ===== -->
+<section id="mars" class="lv mars">
+  <header class="lv-head"><p class="eyebrow">LEVEL 4 // MARS COLONY SPEEDRUN</p><h2>ANY% <span class="gold-t">MARS</span></h2><p class="sub">Same rocket, every run. Launch, land, refuel, repeat.</p></header>
+  <div class="mars-grid">
+    <div class="pad-scene" id="rocketScene">
+      <div class="launch-count"><small>LAUNCHES</small><b id="launches">000</b><small>SAME BOOSTER</small></div>
+      <svg class="rocket" id="rocket" viewBox="0 0 60 160" aria-hidden="true"><defs><linearGradient id="rg" x1="0" x2="1"><stop offset="0" stop-color="#9aa6b8"/><stop offset=".5" stop-color="#f4f7fb"/><stop offset="1" stop-color="#8592a6"/></linearGradient></defs><path d="M30 2c12 14 16 34 16 58v62H14V60c0-24 4-44 16-58z" fill="url(#rg)"/><circle cx="30" cy="52" r="7" fill="#1b2a4a" stroke="#00e5ff" stroke-width="2"/><path d="M14 98 2 130v8l12-8zM46 98l12 32v8l-12-8z" fill="#7f8aa0"/><rect x="18" y="122" width="24" height="8" fill="#3a4152"/><g class="legs"><path d="M16 128 4 156M44 128l12 28" stroke="#c9d1dd" stroke-width="3"/></g><g class="flame"><path d="M20 130q10 40 20 0z" fill="#ffb347"/><path d="M25 130q5 22 10 0z" fill="#fff6d0"/></g></svg>
+      <div class="landpad"></div>
+      <p class="rk-state" id="rkState">STANDBY</p>
+    </div>
+    <div class="splits">
+      <div class="timer" id="timer">00:00.000</div>
+      <ol>
+        <li data-split="0"><span>Earth Orbit</span><b>00:08.4</b></li>
+        <li data-split="1"><span>Mars Transfer</span><b>00:21.7</b></li>
+        <li data-split="2"><span>Landing</span><b>00:33.9</b></li>
+        <li data-split="3"><span>Colony Online</span><b>00:42.0</b></li>
+      </ol>
+      <p class="pb">PERSONAL BEST: <b>WORLD RECORD</b></p>
+    </div>
+  </div>
+  <div class="replays" aria-label="Replay footage">
+    <figure><img src="assets/img/scene_orbit.webp" alt="Robot army battle in orbit" loading="lazy"><figcaption>REPLAY 01 // ORBIT SKIRMISH</figcaption></figure>
+    <figure><img src="assets/img/scene_mars.webp" alt="Robot army battle on Mars" loading="lazy"><figcaption>REPLAY 02 // MARS BEACHHEAD</figcaption></figure>
+    <figure class="gif"><img src="assets/gif/laser_loop.webp" alt="Robot laser firing loop" loading="lazy"><figcaption>LOOP // LASER</figcaption></figure>
+    <figure class="gif"><img src="assets/gif/rocket_reuse.webp" alt="Reusable rocket launch and landing" loading="lazy"><figcaption>LOOP // REUSE</figcaption></figure>
+    <figure class="gif"><img src="assets/gif/enemy_explosion.webp" alt="Enemy explosion" loading="lazy"><figcaption>LOOP // DELETE</figcaption></figure>
+    <figure class="gif"><img src="assets/gif/robot_march.webp" alt="Marching robots" loading="lazy"><figcaption>LOOP // MARCH</figcaption></figure>
+  </div>
+</section>
+
+<!-- ===== RADAR ===== -->
+<section class="lv radar" aria-labelledby="radT">
+  <header class="lv-head"><p class="eyebrow">TACTICAL DISPLAY</p><h2 id="radT">RADAR <span class="cy-t">LOCK</span></h2></header>
+  <div class="scope">
+    <div class="sweep" aria-hidden="true"></div>
+    <iframe id="dexFrame" title="DexScreener chart for $ELONBOSS" loading="lazy"></iframe>
+    <div class="scope-over" id="dexOver"><svg><use href="#i-target"/></svg><strong>SIGNAL PENDING</strong><span>Chart goes live when the CA drops. Contract: TBA</span></div>
+  </div>
+</section>
+
+<!-- ===== QUEST LOG: HOW TO BUY ===== -->
+<section class="lv quest" aria-labelledby="qT">
+  <header class="lv-head"><p class="eyebrow">QUEST LOG</p><h2 id="qT">HOW TO BUY <span class="gold-t">$ELONBOSS</span></h2><p class="sub">Four stages on Solana. Complete them in order.</p></header>
+  <ol class="quests">
+    <li><div class="q-ic"><svg><use href="#i-wallet"/></svg></div><div><p class="q-n">STAGE 1</p><h3>Get a Solana wallet</h3><p>Install Phantom or Solflare and back up your seed phrase offline.</p></div><span class="q-st">+100 XP</span></li>
+    <li><div class="q-ic"><svg><use href="#i-sol"/></svg></div><div><p class="q-n">STAGE 2</p><h3>Fund it with SOL</h3><p>Buy SOL on an exchange and send it to your wallet address.</p></div><span class="q-st">+200 XP</span></li>
+    <li><div class="q-ic"><svg><use href="#i-swap"/></svg></div><div><p class="q-n">STAGE 3</p><h3>Swap on pump.fun</h3><p>Open the <a data-link="buy" target="_blank" rel="noopener">pump.fun swap link</a>, paste the CA and swap SOL for $ELONBOSS.</p></div><span class="q-st">+300 XP</span></li>
+    <li><div class="q-ic"><svg><use href="#i-shield"/></svg></div><div><p class="q-n">STAGE 4</p><h3>Hold and join the army</h3><p>Hold, HODL and join the army on X and Telegram.</p></div><span class="q-st">BOSS LOOT</span></li>
+  </ol>
+</section>
+
+<!-- ===== FINAL: CONTINUE? ===== -->
+<section id="join" class="lv join">
+  <img src="assets/img/army_salute.webp" class="j-l" alt="" aria-hidden="true">
+  <img src="assets/img/army_salute.webp" class="j-r" alt="" aria-hidden="true">
+  <div class="j-in">
+    <p class="eyebrow">FINAL LEVEL // RECRUITMENT</p>
+    <h2 class="cont">CONTINUE?</h2>
+    <div class="count" id="count" aria-live="off">9</div>
+    <p class="sub">The boss is recruiting. Enlist before the counter hits zero.</p>
+    <div class="cta center">
+      <a class="btn btn-buy" data-link="buy" target="_blank" rel="noopener"><img src="assets/brand/pumpfun.png" alt="" width="26" height="26">BUY NOW</a>
+      <!-- SWAP: replace x.svg with the user's x.png when it arrives -->
+      <a class="btn btn-ghost" data-link="x" target="_blank" rel="noopener"><img src="assets/brand/x.svg" alt="" width="20" height="20" class="inv">X</a>
+      <!-- SWAP: replace telegram.svg with the user's tg.png when it arrives -->
+      <a class="btn btn-ghost" data-link="tg" target="_blank" rel="noopener"><img src="assets/brand/telegram.svg" alt="" width="22" height="22">TELEGRAM</a>
+    </div>
+    <div class="ca-box center"><span class="ca-k">CA</span><code class="ca-v" data-ca>TBA</code><button class="ca-btn" data-copy><svg><use href="#i-copy"/></svg>COPY</button></div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <img src="assets/img/logo.webp" alt="" width="40" height="40">
+  <p><b>SPACE FINAL BOSS ($ELONBOSS)</b> &copy; 2026</p>
+  <p class="disc">Parody meme token. Not affiliated with or endorsed by Elon Musk, Tesla, SpaceX or X. No promises of value.</p>
+</footer>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/vendor/ScrollTrigger.min.js"></script>
+<script src="assets/vendor/lenis.min.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
