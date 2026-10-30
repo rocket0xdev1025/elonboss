@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Space Final Boss ($ELONBOSS)</title>
+  <meta name="description" content="Space Final Boss unlocked: Elon Musk. Reusable rockets, Mars colony speedrun, and zero mercy for your outdated plans." />
+  <meta name="theme-color" content="#050814" />
+  <link rel="canonical" href="https://www.spacebosselon.site/" />
+  <link rel="icon" href="logo.jpg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.spacebosselon.site/" />
+  <meta property="og:title" content="Space Final Boss ($ELONBOSS)" />
+  <meta property="og:description" content="Space Final Boss unlocked: Elon Musk. Reusable rockets, Mars colony speedrun, and zero mercy for your outdated plans." />
+  <meta property="og:image" content="https://www.spacebosselon.site/banner.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Space Final Boss ($ELONBOSS)" />
+  <meta name="twitter:description" content="Space Final Boss unlocked: Elon Musk. Reusable rockets, Mars colony speedrun, and zero mercy for your outdated plans." />
+  <meta name="twitter:image" content="https://www.spacebosselon.site/banner.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Sora:wght@400;500;600&display=swap" rel="stylesheet" />
+  <!-- Contract is TBA. When the mint is live, replace TBA in #ca and in every output=TBA buy link. -->
+  <style>
+    :root {
+      --bg: #050814;
+      --gold: #e7c56a;
+      --gold-2: #fff1c2;
+      --ink: #07101c;
+      --text: #eef3ff;
+      --muted: #b7c4dc;
+      --line: rgba(231, 197, 106, 0.28);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: Sora, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(1000px 520px at 88% -10%, rgba(231, 197, 106, 0.09), transparent 55%),
+        radial-gradient(820px 480px at -12% 16%, rgba(32, 78, 150, 0.28), transparent 52%),
+        var(--bg);
+      line-height: 1.5;
+    }
+
+    img { max-width: 100%; }
+
+    a { color: inherit; text-decoration: none; }
+
+    button, input { font: inherit; color: inherit; }
+
+    ::selection { background: var(--gold); color: #161004; }
+
+    .skip {
+      position: absolute;
+      left: 12px;
+      top: -40px;
+      z-index: 50;
+      background: var(--gold);
+      color: var(--ink);
+      padding: 8px 12px;
+      border-radius: 8px;
+    }
+
+    .skip:focus { top: 12px; }
+
+    #stars, .glow {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    #stars { z-index: 0; }
+
+    .glow {
+      z-index: 0;
+      inset: auto;
+      left: 50%;
+      bottom: -42vh;
+      width: 160vw;
+      height: 72vh;
+      transform: translateX(-50%);
+      background: radial-gradient(ellipse at center, rgba(42, 116, 210, 0.4), rgba(8, 18, 42, 0.12) 46%, transparent 72%);
+    }
+
+    .page { position: relative; z-index: 1; }
+
+    .wrap {
+      width: min(1120px, calc(100% - 40px));
+      margin-inline: auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(5, 8, 20, 0.82);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(231, 197, 106, 0.14);
+    }
+
+    .nav-inner {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: Orbitron, Impact, sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      font-size: 14px;
+    }
+
+    .brand img {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      margin-left: 6px;
+      font-family: Orbitron, Impact, sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover { color: var(--gold-2); }
+
+    .nav-actions {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .icon-btn {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+    }
+
+    .icon-btn:hover { border-color: var(--gold); }
+
+    .icon-btn img.x,
+    .pill img.x {
+      mix-blend-mode: screen;
+    }
+
+    .icon-btn img.x { width: 16px; height: 16px; }
+
+    .icon-btn img.tg { width: 22px; height: 22px; border-radius: 50%; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 52px;
+      padding: 0 22px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-family: Orbitron, Impact, sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    }
+
+    .btn svg { display: block; }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn:active { transform: translateY(0); }
+
+    .btn-sm { min-height: 42px; padding: 0 16px; font-size: 11px; letter-spacing: 0.12em; }
+
+    .btn-buy {
+      color: #1a1203;
+      background: linear-gradient(180deg, #fff0c2 0%, #e4bc58 48%, #b8862a 100%);
+      box-shadow: 0 10px 30px rgba(224, 180, 74, 0.22);
+    }
+
+    .btn-buy:hover { box-shadow: 0 16px 36px rgba(224, 180, 74, 0.38); }
+
+    .btn-chart {
+      color: var(--gold-2);
+      background: rgba(5, 8, 20, 0.35);
+      border-color: var(--line);
+    }
+
+    .btn-chart:hover { border-color: var(--gold); }
+
+    .btn:focus-visible,
+    .icon-btn:focus-visible,
+    .pill:focus-visible,
+    .copy:focus-visible,
+    .nav-links a:focus-visible {
+      outline: 2px solid var(--gold-2);
+      outline-offset: 3px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      min-height: calc(100vh - 74px);
+      display: flex;
+      align-items: center;
+      padding: 28px 0 42px;
+    }
+
+    .flyby {
+      position: absolute;
+      height: 2px;
+      width: 130px;
+      background: linear-gradient(90deg, transparent, rgba(255, 180, 100, 0.15), #fff 78%, #ffb15a);
+      filter: drop-shadow(0 0 6px #ff8a3d);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .flyby.one { top: 20%; animation: fly 12s linear infinite; }
+
+    .flyby.two { top: 74%; width: 78px; animation: fly 17s linear 5s infinite; }
+
+    @keyframes fly {
+      0% { transform: translateX(-25vw) rotate(-14deg); opacity: 0; }
+      10% { opacity: 0.85; }
+      78% { opacity: 0.85; }
+      100% { transform: translateX(115vw) rotate(-14deg); opacity: 0; }
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(260px, 0.75fr);
+      gap: 42px;
+      align-items: center;
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0;
+      color: var(--gold);
+      font-family: Orbitron, Impact, sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+    }
+
+    .kicker::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #ff8a3d;
+      box-shadow: 0 0 10px #ff8a3d;
+    }
+
+    .hero .kicker::before { animation: pulse 1.6s ease-in-out infinite; }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.75); }
+    }
+
+    h1, h2, h3 { font-family: Orbitron, Impact, sans-serif; }
+
+    h1 {
+      margin: 12px 0 0;
+      font-size: clamp(46px, 5.4vw, 74px);
+      font-weight: 800;
+      line-height: 0.92;
+      letter-spacing: 0.01em;
+    }
+
+    h1 span { display: block; }
+
+    .gold { color: #e7c56a; }
+
+    @supports ((-webkit-background-clip: text) or (background-clip: text)) {
+      .gold {
+        background: linear-gradient(180deg, #fff6d2 0%, #f0d078 46%, #c8963a 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+    }
+
+    .ticker {
+      display: inline-flex;
+      margin-top: 16px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(231, 197, 106, 0.12);
+      border: 1px solid rgba(231, 197, 106, 0.22);
+      color: var(--gold-2);
+      font-family: Orbitron, Impact, sans-serif;
+      font-size: 13px;
+      letter-spacing: 0.18em;
+    }
+
+    .lede {
+      max-width: 38rem;
+      margin: 18px 0 0;
+      padding-left: 14px;
+      border-left: 2px solid rgba(231, 197, 106, 0.75);
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.55;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .ca {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: fit-content;
+      max-width: 100%;
+      margin-top: 16px;
+      padding: 7px 7px 7px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(5, 8, 16, 0.66);
+    }
+
+    .ca-label {
+      color: var(--gold);
+      font-family: Orbitron, Impact, sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.16em;
+    }
+
+    .ca code {
+      font-family: Orbitron, Impact, sans-serif;
+      font-size: 14px;
+      letter-spacing: 0.12em;
+      color: var(--gold-2);
+    }
+
+    .copy {
+      min-height: 34px;
+      padding: 0 12px;
+      border: 0;
+      border-radius: 999px;
+      background: rgba(231, 197, 106, 0.16);
+      color: var(--gold-2);
+      font-family: Orbitron, Impact, sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      cursor: pointer;
+    }
+
+    .copy:hover { background: rgba(231, 197, 106, 0.28); }
+
+    .socials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      height: 42px;
+      padding: 0 14px 0 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      font-family: Orbitron, Impact, sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+    }
+
+    .pill:hover { border-color: var(--gold); color: var(--gold-2); }
+
+    .pill img.x { width: 16px; height: 16px; }
+
+    .pill img.tg { width: 20px; height: 20px; border-radius: 50%; }
+
+    .medal {
+      position: relative;
+      width: min(420px, 100%);
+      margin-inline: auto;
+    }
+
+    .medal img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid var(--gold);
+      box-shadow:
+        0 0 0 12px rgba(231, 197, 106, 0.1),
+        0 30px 80px rgba(0, 0, 0, 0.5);
+    }
+
+    .orbit {
+      position: absolute;
+      inset: -16px;
+      border-radius: 50%;
+      border: 1px dashed rgba(231, 197, 106, 0.5);
+      animation: spin 26s linear infinite;
+    }
+
+    .orbit span {
+      position: absolute;
+      top: 50%;
+      right: -7px;
+      width: 14px;
+      height: 14px;
+      margin-top: -7px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #fff, #ff8a3d 45%, #ff5a1f);
+      box-shadow: 0 0 16px #ff8a3d, -16px 0 14px rgba(255, 176, 92, 0.85);
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .lock {
+      position: absolute;
+      left: 50%;
+      bottom: 8px;
+      transform: translateX(-50%);
+      margin: 0;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(5, 8, 16, 0.78);
+      border: 1px solid var(--line);
+      color: var(--gold-2);
+      font-family: Orbitron, Impact, sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+    }
+
+    .marquee {
+      overflow: hidden;
+      border-block: 1px solid var(--line);
+      background: rgba(231, 197, 106, 0.05);
+    }
+
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: ticker 32s linear infinite;
+    }
+
+    .marquee:hover .marquee-track { animation-play-state: paused; }
+
+    .marquee p {
+      margin: 0;
+      padding: 13px 0;
+      color: #f0d48a;
+      font-family: Orbitron, Impact, sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.22em;
+      white-space: nowrap;
+    }
+
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .cinema { padding: 34px 0 10px; }
+
+    .frame {
+      margin: 0;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid rgba(231, 197, 106, 0.38);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.38);
+    }
+
+    .frame img { display: block; width: 100%; height: auto; }
+
+    .section { padding: 78px 0; }
+
+    h2 {
+      margin: 10px 0 0;
+      font-size: clamp(30px, 4vw, 48px);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: 0.02em;
+    }
+
+    .rules {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .rule {
+      position: relative;
+      overflow: hidden;
+      min-height: 220px;
+      padding: 26px 22px 24px;
+      border-radius: 22px;
+      border: 1px solid rgba(231, 197, 106, 0.2);
+      background: linear-gradient(180deg, rgba(14, 22, 40, 0.92), rgba(7, 10, 18, 0.92));
+    }
+
+    .rule::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 22px;
+      right: 22px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .num {
+      position: absolute;
+      top: 12px;
+      right: 16px;
+      margin: 0;
+      color: rgba(231, 197, 106, 0.16);
+      font-family: Orbitron, Impact, sans-serif;
+      font-size: 42px;
+      font-weight: 800;
+    }
+
+    .rule h3 {
+      position: relative;
+      margin: 18px 0 10px;
+      max-width: 12ch;
+      font-size: 20px;
+      letter-spacing: 0.04em;
+      line-height: 1.25;
+    }
+
+    .rule p {
+      position: relative;
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .spec { margin: 22px 0 0; }
+
+    .spec div {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 12px;
+      align-items: baseline;
+      padding: 13px 0;
+      border-bottom: 1px solid rgba(231, 197, 106, 0.16);
+    }
+
+    .spec dt {
+      color: var(--gold);
+      font-family: Orbitron, Impact, sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .spec dd {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .steps {
+      counter-reset: step;
+      list-style: none;
+      margin: 8px 0 0;
+      padding: 0;
+    }
+
+    .steps li {
+      counter-increment: step;
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: 6px;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .steps li::before {
+      content: counter(step, decimal-leading-zero);
+      padding-top: 3px;
+      color: var(--gold);
+      font-family: Orbitron, Impact, sans-serif;
+      letter-spacing: 0.08em;
+    }
+
+    .steps h3 {
+      margin: 0 0 4px;
+      font-size: 16px;
+      letter-spacing: 0.06em;
+    }
+
+    .steps p { margin: 0; color: var(--muted); }
+
+    #dossier { padding-top: 0; }
+
+    .finale { text-align: center; padding: 10px 0 86px; }
+
+    .finale .kicker {
+      display: flex;
+      width: max-content;
+      margin-inline: auto;
+    }
+
+    .finale h2 { font-size: clamp(34px, 5vw, 64px); }
+
+    .finale .lede {
+      margin-inline: auto;
+      border: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    .finale .actions { justify-content: center; }
+
+    footer {
+      border-top: 1px solid rgba(231, 197, 106, 0.16);
+      padding: 28px 0 40px;
+    }
+
+    .foot {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: end;
+      flex-wrap: wrap;
+    }
+
+    .brand-foot {
+      margin: 0;
+      font-family: Orbitron, Impact, sans-serif;
+      letter-spacing: 0.14em;
+      font-size: 14px;
+    }
+
+    .sub {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .foot-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-family: Orbitron, Impact, sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+    }
+
+    .foot-links a:hover { color: var(--gold); }
+
+    .fine {
+      max-width: 46rem;
+      margin: 18px 0 0;
+      color: #8ea0c0;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .dock { display: none; }
+
+    @media (max-width: 860px) {
+      .hero { min-height: 0; display: block; }
+      .hero-grid, .rules, .split { grid-template-columns: 1fr; }
+      .medal { width: min(320px, 78vw); margin-top: 8px; }
+      .nav-links { display: none; }
+    }
+
+    @media (max-width: 760px) {
+      .wrap { width: min(1120px, calc(100% - 32px)); }
+      .nav-actions .btn { display: none; }
+      .section { padding: 56px 0; }
+      .lede { font-size: 16px; }
+      .actions .btn { flex: 1; }
+      .dock {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 40;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+        background: rgba(5, 8, 20, 0.94);
+        border-top: 1px solid var(--line);
+        backdrop-filter: blur(12px);
+      }
+      body { padding-bottom: 76px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#content">Skip to content</a>
+  <canvas id="stars" aria-hidden="true"></canvas>
+  <div class="glow" aria-hidden="true"></div>
+
+  <div class="page" id="top">
+    <header class="nav">
+      <div class="wrap nav-inner">
+        <a class="brand" href="#top">
+          <img src="logo.jpg" alt="" width="42" height="42" />
+          <span>ELONBOSS</span>
+        </a>
+        <nav class="nav-links" aria-label="Sections">
+          <a href="#mission">Mission</a>
+          <a href="#dossier">Dossier</a>
+          <a href="#summon">Buy</a>
+        </nav>
+        <div class="nav-actions">
+          <a class="icon-btn" href="https://x.com/spaceboss_elon" target="_blank" rel="noopener noreferrer" aria-label="Space Final Boss on X">
+            <img class="x" src="x.png" alt="" width="16" height="16" />
+          </a>
+          <a class="icon-btn" href="https://t.me/spaceboss_elon" target="_blank" rel="noopener noreferrer" aria-label="Space Final Boss on Telegram">
+            <img class="tg" src="tg.png" alt="" width="22" height="22" />
+          </a>
+          <a class="btn btn-chart btn-sm" href="https://dexscreener.com/solana/" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true">
+              <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4 16l5-5 3 3 8-8" />
+              <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M15 6h5v5" />
+            </svg>
+            Chart
+          </a>
+          <a class="btn btn-buy btn-sm" href="https://swap.pump.fun/?input=So11111111111111111111111111111111111111112&output=TBA" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true">
+              <path fill="currentColor" d="M12 2.2c1.8 2.8 2.8 5.2 2.8 7.7 0 1-.2 2-.5 2.9l1.8 2.4-2.3-1a6.8 6.8 0 0 1-3.6 0l-2.3 1 1.8-2.4a8 8 0 0 1-.5-2.9c0-2.5 1-4.9 2.8-7.7z" />
+              <path fill="currentColor" d="M10.2 19.2 12 22l1.8-2.8h-3.6z" />
+            </svg>
+            Buy
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main id="content">
+      <section class="hero">
+        <div class="flyby one" aria-hidden="true"></div>
+        <div class="flyby two" aria-hidden="true"></div>
+        <div class="wrap hero-grid">
+          <div>
+            <p class="kicker">Final boss unlocked</p>
+            <h1>
+              <span>SPACE</span>
+              <span class="gold">FINAL BOSS</span>
+            </h1>
+            <p class="ticker">$ELONBOSS</p>
+            <p class="lede">Space Final Boss unlocked: Elon Musk. Reusable rockets, Mars colony speedrun, and zero mercy for your outdated plans.</p>
+            <div class="actions">
+              <a class="btn btn-buy" href="https://swap.pump.fun/?input=So11111111111111111111111111111111111111112&output=TBA" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+                  <path fill="currentColor" d="M12 2.2c1.8 2.8 2.8 5.2 2.8 7.7 0 1-.2 2-.5 2.9l1.8 2.4-2.3-1a6.8 6.8 0 0 1-3.6 0l-2.3 1 1.8-2.4a8 8 0 0 1-.5-2.9c0-2.5 1-4.9 2.8-7.7z" />
+                  <path fill="currentColor" d="M10.2 19.2 12 22l1.8-2.8h-3.6z" />
+                </svg>
+                Buy
+              </a>
+              <a class="btn btn-chart" href="https://dexscreener.com/solana/" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+                  <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4 16l5-5 3 3 8-8" />
+                  <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M15 6h5v5" />
+                </svg>
+                Chart
+              </a>
+            </div>
+            <div class="ca">
+              <span class="ca-label">Contract</span>
+              <code id="ca">TBA</code>
+              <button class="copy" type="button" data-copy><span>Copy</span></button>
+            </div>
+            <div class="socials">
+              <a class="pill" href="https://x.com/spaceboss_elon" target="_blank" rel="noopener noreferrer">
+                <img class="x" src="x.png" alt="" width="16" height="16" />
+                <span>X</span>
+              </a>
+              <a class="pill" href="https://t.me/spaceboss_elon" target="_blank" rel="noopener noreferrer">
+                <img class="tg" src="tg.png" alt="" width="20" height="20" />
+                <span>Telegram</span>
+              </a>
+            </div>
+          </div>
+          <div class="medal">
+            <div class="orbit" aria-hidden="true"><span></span></div>
+            <img src="logo.jpg" alt="Space Final Boss, Elon Musk in a navy admiral uniform with a rocket over Earth" width="840" height="840" fetchpriority="high" />
+            <p class="lock">Target locked</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee-track">
+          <p>SPACE FINAL BOSS&nbsp;&nbsp;·&nbsp;&nbsp;$ELONBOSS&nbsp;&nbsp;·&nbsp;&nbsp;REUSABLE ROCKETS&nbsp;&nbsp;·&nbsp;&nbsp;MARS COLONY SPEEDRUN&nbsp;&nbsp;·&nbsp;&nbsp;ZERO MERCY&nbsp;&nbsp;·&nbsp;&nbsp;</p>
+          <p>SPACE FINAL BOSS&nbsp;&nbsp;·&nbsp;&nbsp;$ELONBOSS&nbsp;&nbsp;·&nbsp;&nbsp;REUSABLE ROCKETS&nbsp;&nbsp;·&nbsp;&nbsp;MARS COLONY SPEEDRUN&nbsp;&nbsp;·&nbsp;&nbsp;ZERO MERCY&nbsp;&nbsp;·&nbsp;&nbsp;</p>
+        </div>
+      </div>
+
+      <section class="cinema" aria-label="Banner">
+        <div class="wrap">
+          <figure class="frame">
+            <img src="banner.png" alt="The Space Final Boss points ahead as a rocket climbs and the crew salutes above Earth" loading="lazy" />
+          </figure>
+        </div>
+      </section>
+
+      <section class="section" id="mission">
+        <div class="wrap">
+          <p class="kicker">The loadout</p>
+          <h2>Three rules. No patch notes.</h2>
+          <div class="rules">
+            <article class="rule">
+              <p class="num">01</p>
+              <h3>Reusable rockets</h3>
+              <p>Down is a layover. Relight, climb, and leave the old flight plan in the exhaust.</p>
+            </article>
+            <article class="rule">
+              <p class="num">02</p>
+              <h3>Mars colony speedrun</h3>
+              <p>Any percent. No cutscenes. The colony is the finish line, and the clock is already running.</p>
+            </article>
+            <article class="rule">
+              <p class="num">03</p>
+              <h3>Zero mercy</h3>
+              <p>Outdated plans get vented. If it cannot reach Mars, it does not make the roster.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="dossier">
+        <div class="wrap split">
+          <div>
+            <p class="kicker">Boss file</p>
+            <h2>Read this before you queue.</h2>
+            <dl class="spec">
+              <div><dt>Callsign</dt><dd>ELONBOSS</dd></div>
+              <div><dt>Rank</dt><dd>Space Final Boss</dd></div>
+              <div><dt>Chain</dt><dd>Solana</dd></div>
+              <div><dt>Objective</dt><dd>Mars colony speedrun</dd></div>
+              <div><dt>Contract</dt><dd id="ca-spec">TBA</dd></div>
+              <div><dt>Mercy</dt><dd>Zero</dd></div>
+            </dl>
+          </div>
+          <div id="summon">
+            <p class="kicker">How to buy</p>
+            <h2>Three steps. Then launch.</h2>
+            <ol class="steps">
+              <li>
+                <div>
+                  <h3>Fuel up</h3>
+                  <p>Put SOL in a Solana wallet. That is the only propellant this fight accepts.</p>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <h3>Call the swap</h3>
+                  <p>Buy opens the pump.fun swap with SOL in and $ELONBOSS out.</p>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <h3>Track the flight</h3>
+                  <p>Confirm it, then open the chart. Outdated plans stay on the pad.</p>
+                </div>
+              </li>
+            </ol>
+            <div class="actions">
+              <a class="btn btn-buy" href="https://swap.pump.fun/?input=So11111111111111111111111111111111111111112&output=TBA" target="_blank" rel="noopener noreferrer">Buy</a>
+              <a class="btn btn-chart" href="https://dexscreener.com/solana/" target="_blank" rel="noopener noreferrer">Chart</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="finale">
+        <div class="wrap">
+          <p class="kicker">Launch window</p>
+          <h2>The colony does not wait.</h2>
+          <p class="lede">Reusable rockets. Mars colony speedrun. Zero mercy for your outdated plans.</p>
+          <div class="actions">
+            <a class="btn btn-buy" href="https://swap.pump.fun/?input=So11111111111111111111111111111111111111112&output=TBA" target="_blank" rel="noopener noreferrer">Buy $ELONBOSS</a>
+            <a class="btn btn-chart" href="https://dexscreener.com/solana/" target="_blank" rel="noopener noreferrer">Chart</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap">
+        <div class="foot">
+          <div>
+            <p class="brand-foot">SPACE FINAL BOSS</p>
+            <p class="sub">$ELONBOSS · Solana</p>
+          </div>
+          <nav class="foot-links" aria-label="Social">
+            <a href="https://www.spacebosselon.site" target="_blank" rel="noopener noreferrer">Website</a>
+            <a href="https://x.com/spaceboss_elon" target="_blank" rel="noopener noreferrer">X</a>
+            <a href="https://t.me/spaceboss_elon" target="_blank" rel="noopener noreferrer">Telegram</a>
+          </nav>
+        </div>
+        <p class="fine">$ELONBOSS is an unofficial meme on Solana. Not affiliated with Elon Musk, SpaceX, Tesla, or X. Nothing here is financial advice.</p>
+      </div>
+    </footer>
+  </div>
+
+  <div class="dock">
+    <a class="btn btn-buy" href="https://swap.pump.fun/?input=So11111111111111111111111111111111111111112&output=TBA" target="_blank" rel="noopener noreferrer">Buy</a>
+    <a class="btn btn-chart" href="https://dexscreener.com/solana/" target="_blank" rel="noopener noreferrer">Chart</a>
+  </div>
+
+  <script>
+    (function () {
+      var canvas = document.getElementById("stars");
+      if (!canvas || !canvas.getContext) return;
+      var ctx = canvas.getContext("2d");
+      var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var stars = [];
+      var w = 0;
+      var h = 0;
+      var running = !reduce;
+
+      function layout() {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+        var count = Math.min(160, Math.floor((w * h) / 14000));
+        stars = [];
+        for (var i = 0; i < count; i++) {
+          stars.push({
+            x: Math.random() * w,
+            y: Math.random() * h,
+            r: Math.random() * 1.3 + 0.2,
+            p: Math.random() * Math.PI * 2,
+            s: Math.random() * 0.02 + 0.004
+          });
+        }
+      }
+
+      function frame() {
+        ctx.clearRect(0, 0, w, h);
+        for (var i = 0; i < stars.length; i++) {
+          var star = stars[i];
+          if (running) star.p += star.s;
+          var alpha = 0.2 + (Math.sin(star.p) * 0.5 + 0.5) * 0.8;
+          ctx.fillStyle = "rgba(255,255,255," + alpha.toFixed(3) + ")";
+          ctx.beginPath();
+          ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        if (running) requestAnimationFrame(frame);
+      }
+
+      layout();
+      frame();
+      window.addEventListener("resize", function () {
+        layout();
+        if (!running) frame();
+      });
+    })();
+
+    (function () {
+      var button = document.querySelector("[data-copy]");
+      var node = document.getElementById("ca");
+      if (!button || !node) return;
+      var label = button.querySelector("span");
+      button.addEventListener("click", async function () {
+        var text = node.textContent.trim();
+        var ok = false;
+        try {
+          await navigator.clipboard.writeText(text);
+          ok = true;
+        } catch (err) {
+          var area = document.createElement("textarea");
+          area.value = text;
+          area.setAttribute("readonly", "");
+          area.style.position = "fixed";
+          area.style.left = "-9999px";
+          document.body.appendChild(area);
+          area.select();
+          ok = document.execCommand("copy");
+          area.remove();
+        }
+        label.textContent = ok ? "Copied" : "Select CA";
+        setTimeout(function () { label.textContent = "Copy"; }, 1400);
+      });
+    })();
+  </script>
+</body>
+</html>
